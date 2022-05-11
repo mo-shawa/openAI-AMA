@@ -4,6 +4,7 @@ import Form from './components/Form/Form';
 import { useState } from 'react';
 
 
+
 function App() {
   const [prompt, setPrompt] = useState('');
   const [responses, setResponses] = useState([]);
@@ -12,7 +13,10 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    console.log('submit');
+    console.log(prompt);
+
+
+    setPrompt('');
   }
 
   const handleChange = (e) => {
@@ -21,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      <Form handleChange={handleChange} handleSubmit={handleSubmit} />
+      <Form handleChange={handleChange} prompt={prompt} handleSubmit={handleSubmit} />
       <div className='responses'>
         {isLoading ? <h1>Loading...</h1> : responses.map((response, index) => {
           return <Card key={index} response={response} />

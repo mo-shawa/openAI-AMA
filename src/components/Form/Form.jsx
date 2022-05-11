@@ -4,7 +4,7 @@ export default function Form(props) {
     return (
         <>
             <form onSubmit={props.handleSubmit}>
-                <textarea onChange={props.handleChange} name="prompt" id="text" cols="30" rows="10"></textarea>
+                <textarea onChange={props.handleChange} value={props.prompt} name="prompt" id="text" cols="30" rows="10"></textarea>
                 <input type="submit" value="Submit" />
             </form>
         </>
