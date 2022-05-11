@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <Form handleChange={handleChange} handleSubmit={handleSubmit} prompt={prompt} />
+      <Form handleChange={handleChange} handleSubmit={handleSubmit} />
       <div className='responses'>
         {isLoading ? <h1>Loading...</h1> : responses.map((response, index) => {
           return <Card key={index} response={response} />
