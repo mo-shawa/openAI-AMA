@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import Card from './components/Card/Card';
+import Form from './components/Form/Form';
+import { useState } from 'react';
+
 
 function App() {
+  const [prompt, setPrompt] = useState('');
+  const [responses, setResponses] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    console.log('submit');
+  }
+
+  const handleChange = (e) => {
+    setPrompt(e.target.value);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form handleChange={handleChange} handleSubmit={handleSubmit} prompt={prompt} />
+      <div className='responses'>
+        {isLoading ? <h1>Loading...</h1> : responses.map((response, index) => {
+          return <Card key={index} response={response} />
+        })}
+      </div>
     </div>
   );
 }
