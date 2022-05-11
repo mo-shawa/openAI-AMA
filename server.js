@@ -9,11 +9,11 @@ const app = express()
 app.use(logger('dev'))
 app.use(express.json())
 
-app.use(favicon(path.join(__dirname, './public/favicon.ico')))
-app.use(express.static(path.join(__dirname, './public')))
+app.use(favicon(path.join(__filename, '../build/favicon.ico')))
+app.use(express.static(path.join(__dirname, 'build')))
 
-app.get('/test', (req, res) => {
-    res.send(process.env.TEST)
+app.get('/api', (req, res) => {
+    res.send(process.env.GPT3_KEY)
 })
 
 app.get('/*', (req, res) => {
