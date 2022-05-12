@@ -4,15 +4,28 @@ import Form from './components/Form/Form';
 import { useState } from 'react';
 
 
+
 function App() {
   const [prompt, setPrompt] = useState('');
   const [responses, setResponses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    console.log('submit');
+
+    const response = await fetch('/api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ prompt })
+    })
+    const data = await response.json();
+    console.log(data)
+    setResponses([...responses, { prompt: prompt, response: data.response.choices[0] }]);
+    setIsLoading(false);
+    setPrompt(data.body.prompt);
   }
 
   const handleChange = (e) => {
@@ -21,7 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <Form handleChange={handleChange} handleSubmit={handleSubmit} />
+      <Form handleChange={handleChange} prompt={prompt} handleSubmit={handleSubmit} />
       <div className='responses'>
         {isLoading ? <h1>Loading...</h1> : responses.map((response, index) => {
           return <Card key={index} response={response} />
