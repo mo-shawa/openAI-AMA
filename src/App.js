@@ -23,6 +23,7 @@ function App() {
     })
     const data = await response.json();
     console.log(data)
+    setResponses([...responses, { prompt: prompt, response: data.response.choices[0] }]);
     setIsLoading(false);
     setPrompt(data.body.prompt);
   }
