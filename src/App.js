@@ -10,13 +10,21 @@ function App() {
   const [responses, setResponses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    console.log(prompt);
 
-
-    setPrompt('');
+    const response = await fetch('/api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ prompt })
+    })
+    const data = await response.json();
+    console.log(data)
+    setIsLoading(false);
+    setPrompt(data.body.prompt);
   }
 
   const handleChange = (e) => {
