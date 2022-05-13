@@ -23,7 +23,7 @@ function App() {
     })
     const data = await response.json();
     console.log(data)
-    setResponses([...responses, { prompt: prompt, response: data.response.choices[0] }]);
+    setResponses([...responses, { prompt: prompt, response: data.response.choices[0].text }]);
     setIsLoading(false);
     setPrompt(data.body.prompt);
   }
@@ -34,12 +34,14 @@ function App() {
 
   return (
     <div className="App">
-      <Form handleChange={handleChange} prompt={prompt} handleSubmit={handleSubmit} />
-      <div className='responses'>
-        {isLoading ? <h1>Loading...</h1> : responses.map((response, index) => {
-          return <Card key={index} response={response} />
-        })}
+      <div className="form-container">
+        <Form handleChange={handleChange} prompt={prompt} handleSubmit={handleSubmit} />
+        {/* <div className='responses'> */}
       </div>
+      {isLoading ? <h1>Loading...</h1> : responses.map((response, index) => {
+        return <Card key={index} response={response} />
+      })}
+      {/* </div> */}
     </div>
   );
 }
