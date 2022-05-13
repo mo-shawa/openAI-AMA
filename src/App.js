@@ -1,14 +1,24 @@
 import './App.css';
 import Card from './components/Card/Card';
 import Form from './components/Form/Form';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 
 function App() {
   const [prompt, setPrompt] = useState('');
-  const [responses, setResponses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  // const [responses, setResponses] = useState([]);
+  const [responses, setResponses] = useState(() => {
+    const storage = JSON.parse(localStorage.getItem('responses'));
+    return storage || [];
+  });
+
+  useEffect(() => {
+    // if (!responses.length) return
+    localStorage.setItem('responses', JSON.stringify(responses));
+  }, [responses])
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +35,7 @@ function App() {
     console.log(data)
     setResponses([...responses, { prompt: prompt, response: data.response.choices[0].text }]);
     setIsLoading(false);
-    setPrompt(data.body.prompt);
+    setPrompt('');
   }
 
   const handleChange = (e) => {
@@ -38,7 +48,8 @@ function App() {
         <Form handleChange={handleChange} prompt={prompt} handleSubmit={handleSubmit} />
         {/* <div className='responses'> */}
       </div>
-      {isLoading ? <h1>Loading...</h1> : responses.map((response, index) => {
+
+      {isLoading || !responses.length ? <h1>Loading...</h1> : responses.map((response, index) => {
         return <Card key={index} response={response} />
       })}
       {/* </div> */}
