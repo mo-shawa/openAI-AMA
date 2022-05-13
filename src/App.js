@@ -8,14 +8,13 @@ import { useState, useEffect } from 'react';
 function App() {
   const [prompt, setPrompt] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  // const [responses, setResponses] = useState([]);
   const [responses, setResponses] = useState(() => {
     const storage = JSON.parse(localStorage.getItem('responses'));
     return storage || [];
   });
 
+
   useEffect(() => {
-    // if (!responses.length) return
     localStorage.setItem('responses', JSON.stringify(responses));
   }, [responses])
 
@@ -46,13 +45,12 @@ function App() {
     <div className="App">
       <div className="form-container">
         <Form handleChange={handleChange} prompt={prompt} handleSubmit={handleSubmit} />
-        {/* <div className='responses'> */}
       </div>
-
-      {isLoading || !responses.length ? <h1>Loading...</h1> : responses.map((response, index) => {
-        return <Card key={index} response={response} />
-      })}
-      {/* </div> */}
+      <div className='responses'>
+        {isLoading || !responses.length ? <h1>Loading...</h1> : responses.map((response, index) => {
+          return <Card key={index} response={response} />
+        })}
+      </div>
     </div>
   );
 }

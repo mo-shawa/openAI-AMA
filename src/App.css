@@ -40,13 +40,13 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #ffffff6e;
-  backdrop-filter: blur(0.5rem);
+  background-color: #ffffffd0;
+  backdrop-filter: blur(0.5rem) saturate(1.5);
   position: sticky;
   top: 0;
   /* height: 30vh; */
   margin: 1.5rem auto;
-  margin-bottom: 50%
+  padding: 2rem;
 }
 
 form {
@@ -54,17 +54,25 @@ form {
   max-width: 700px;
 }
 
+.responses {
+  display: block;
+  height: 50vh
+}
+
 textarea {
   display: block;
   width: 100%;
+  border: 1px solid #babfc3;
+  border-radius: 0.25rem;
+
 }
 
 button {
-  /* display: block;
-  margin: 0 auto;
-  width: 100%; */
-
-  display: inline-block;
+  display: inline;
+  float: right;
+  width: 50%;
+  margin: 1rem auto;
+  display: inline;
   outline: 0;
   cursor: pointer;
   text-align: center;
@@ -93,7 +101,6 @@ button:hover {
   padding: 3.5rem;
   background: #008060;
   color: white;
-  /* overflow: visible; */
   margin-bottom: 1.5rem;
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
