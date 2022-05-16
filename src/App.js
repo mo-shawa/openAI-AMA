@@ -1,6 +1,7 @@
 import './App.css';
 import Card from './components/Card/Card';
 import Form from './components/Form/Form';
+import LoadingIcon from './components/LoadingIcon/LoadingIcon';
 import { useState, useEffect } from 'react';
 
 
@@ -47,7 +48,8 @@ function App() {
         <Form handleChange={handleChange} prompt={prompt} handleSubmit={handleSubmit} />
       </div>
       <div className='responses'>
-        {isLoading || !responses.length ? <h1>Loading...</h1> : responses.map((response, index) => {
+        {!responses.length && <h1>Ask GPT3 anything!</h1>}
+        {isLoading ? <LoadingIcon /> : responses.map((response, index) => {
           return <Card key={index} response={response} />
         })}
       </div>
