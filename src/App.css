@@ -31,15 +31,33 @@ details {
   color: #202223;
   font-weight: 500;
   font-size: 14px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+
 }
 
-details>*:not(summary) {
+.detailsContent {
+  height: 100%
+}
+
+.detailsContent>* {
   width: 100%;
   margin: 0.5rem 0.25rem
 }
 
 summary {
   cursor: pointer;
+  transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+}
+
+summary:hover {
+  text-decoration: underline;
+  color: #008060
+}
+
+summary::marker {
+  color: #008060;
+  transform: rotate(45deg);
 }
 
 .form-control {
@@ -180,7 +198,7 @@ button {
   min-width: 44px;
   color: #202223;
   background: #ffffff;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   font-weight: 500;
   font-size: 14px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
