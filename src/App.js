@@ -15,21 +15,6 @@ function App() {
     return storage || [];
   });
 
-  const transitionIcon = useTransition(isLoading, {
-    from: { opacity: 0, },
-    enter: { opacity: 1 },
-    leave: { opacity: 0, },
-  })
-
-  const transitionCard = useTransition(!isLoading, {
-    from: { opacity: 0, marginLeft: -100 },
-    enter: { opacity: 1, marginLeft: 0 },
-    leave: { opacity: 0, marginLeft: 100 },
-
-
-
-  })
-
   useEffect(() => {
     localStorage.setItem('responses', JSON.stringify(responses));
   }, [responses])
@@ -57,12 +42,25 @@ function App() {
     setPrompt(e.target.value);
   }
 
+  const transitionIcon = useTransition(isLoading, {
+    from: { opacity: 0, },
+    enter: { opacity: 1 },
+    leave: { opacity: 0, },
+  })
+
+  const transitionCard = useTransition(!isLoading, {
+    from: { opacity: 0, marginLeft: -100 },
+    enter: { opacity: 1, marginLeft: 0 },
+    leave: { opacity: 0, marginLeft: 100 },
+  })
+
+
   return (
     <div className="App">
       <div className="form-container">
         <Form handleChange={handleChange} prompt={prompt} handleSubmit={handleSubmit} />
       </div>
-      <div className='responses'>
+      <div style={isLoading ? { overflow: 'hidden' } : {}} className='responses'>
         {!responses.length && !isLoading && <h1>Ask GPT3 anything!</h1>}
         {transitionIcon((style, loading) => (
           loading ? <animated.div style={style}>
