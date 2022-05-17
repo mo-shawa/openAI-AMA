@@ -28,6 +28,8 @@ l3 -364 145 -84 c80 -47 151 -87 158 -90 9 -4 12 73 12 363 l0 369 295 170
 12 192 101 358 197 l303 175 0 183 c0 100 -1 182 -3 182 -1 0 -143 -81 -316
 -180z"/>
             </g>
+            {/* <animate attributeName="opacity" values='1;0.5;1' dur='2s' repeatCount='indefinite' /> */}
+            <animateTransform attributeName='transform' type='rotate' from={0} to={180} dur='8s' repeatCount='indefinite' />
         </svg>
     )
 }

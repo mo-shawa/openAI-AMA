@@ -33,7 +33,7 @@ function App() {
     })
     const data = await response.json();
     console.log(data)
-    setResponses([...responses, { prompt: prompt, response: data.response.choices[0].text }]);
+    setResponses([{ prompt: prompt, response: data.response.choices[0].text }, ...responses]);
     setIsLoading(false);
     setPrompt('');
   }
@@ -48,7 +48,6 @@ function App() {
         <Form handleChange={handleChange} prompt={prompt} handleSubmit={handleSubmit} />
       </div>
       <div className='responses'>
-        {/* <LoadingIcon /> */}
         {!responses.length && !isLoading && <h1>Ask GPT3 anything!</h1>}
         {isLoading ? <LoadingIcon /> : responses.map((response, index) => {
           return <Card key={index} response={response} />
