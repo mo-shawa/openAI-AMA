@@ -9,7 +9,7 @@ import { useTransition, animated } from 'react-spring'
 
 
 function App() {
-  const [prompt, setPrompt] = useState('');
+  const [prompt, setPrompt] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [responses, setResponses] = useState(() => {
     const storage = JSON.parse(localStorage.getItem('responses'));
@@ -30,17 +30,21 @@ function App() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ prompt })
+      body: JSON.stringify(prompt)
     })
     const data = await response.json();
     console.log(data)
-    setResponses([{ prompt: prompt, response: data.response.choices[0].text }, ...responses]);
+    setResponses([{
+      prompt: prompt.prompt,
+      response: data.response.choices[0].text,
+      model: data.response.model
+    }, ...responses]);
     setIsLoading(false);
     setPrompt('');
   }
 
   const handleChange = (e) => {
-    setPrompt(e.target.value);
+    setPrompt(state => ({ ...state, [e.target.name]: e.target.value }));
   }
 
   const transitionIcon = useTransition(isLoading, {

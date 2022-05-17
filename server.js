@@ -15,20 +15,25 @@ app.use(favicon(path.join(__filename, '../build/favicon.ico')))
 app.use(express.static(path.join(__dirname, 'build')))
 
 app.post('/api', async (req, res) => {
-
+    console.log("here's req.body: ", req.body)
+    // for (let key in req.body) {
+    //     if (req.body[key] === '') delete req.body[key]
+    // }
     const configuration = new Configuration({ apiKey: process.env.GPT3_KEY })
     const api = new OpenAIApi(configuration)
 
     const model = req.body.model || "text-curie-001"
+    const temp = parseInt(req.body.temperature) || 0.5
+    const tokens = parseInt(req.body.maxTokens) || 50
 
     const response = await api.createCompletion(model,
         {
             prompt: req.body.prompt,
-            temperature: 0, // creativity
-            max_tokens: 30, // max "syllables"
+            temperature: temp, // creativity
+            max_tokens: tokens, // max "syllables"
         })
 
-    console.log(response)
+    // console.log(response)
 
     res.json({ response: response.data })
 })

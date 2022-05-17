@@ -19,6 +19,38 @@ a:hover {
   position: relative;
 }
 
+details {
+  display: inline;
+  float: left;
+  width: 50%;
+  margin: 1rem auto;
+  text-align: center;
+  padding: 11px 24px;
+  min-height: 44px;
+  min-width: 44px;
+  color: #202223;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+details>*:not(summary) {
+  width: 100%;
+  margin: 0.5rem 0.25rem
+}
+
+summary {
+  cursor: pointer;
+}
+
+.form-control {
+  width: 100%
+}
+
+input {
+  width: 100%;
+  display: inline;
+}
+
 * {
   margin: 0;
   padding: 0;
