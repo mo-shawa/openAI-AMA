@@ -2,6 +2,7 @@ import './App.css';
 import Card from './components/Card/Card';
 import Form from './components/Form/Form';
 import LoadingIcon from './components/LoadingIcon/LoadingIcon';
+import IconBar from './components/IconBar/IconBar';
 import { useState, useEffect } from 'react';
 import { useTransition, animated } from 'react-spring'
 
@@ -57,7 +58,9 @@ function App() {
 
   return (
     <div className="App">
+      <IconBar />
       <div className="form-container">
+
         <Form handleChange={handleChange} prompt={prompt} handleSubmit={handleSubmit} />
       </div>
       <div style={isLoading ? { overflow: 'hidden' } : {}} className='responses'>
