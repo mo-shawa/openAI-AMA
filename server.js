@@ -3,7 +3,6 @@ const path = require('path')
 const favicon = require('serve-favicon')
 const logger = require('morgan')
 const { Configuration, OpenAIApi } = require('openai')
-const axios = require('axios')
 require('dotenv').config()
 
 const app = express()
