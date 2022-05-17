@@ -16,9 +16,7 @@ app.use(express.static(path.join(__dirname, 'build')))
 
 app.post('/api', async (req, res) => {
     console.log("here's req.body: ", req.body)
-    // for (let key in req.body) {
-    //     if (req.body[key] === '') delete req.body[key]
-    // }
+
     const configuration = new Configuration({ apiKey: process.env.GPT3_KEY })
     const api = new OpenAIApi(configuration)
 
@@ -32,8 +30,6 @@ app.post('/api', async (req, res) => {
             temperature: temp, // creativity
             max_tokens: tokens, // max "syllables"
         })
-
-    // console.log(response)
 
     res.json({ response: response.data })
 })

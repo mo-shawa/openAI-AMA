@@ -33,7 +33,6 @@ function App() {
       body: JSON.stringify(prompt)
     })
     const data = await response.json();
-    console.log(data)
     setResponses([{
       prompt: prompt.prompt,
       response: data.response.choices[0].text,

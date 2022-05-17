@@ -6,7 +6,6 @@ export default function Card(props) {
             <h3>Prompt: {props.response.prompt}</h3>
             <br />
             <p>Response: {props.response.response}</p>
-
         </article>
     )
 }
