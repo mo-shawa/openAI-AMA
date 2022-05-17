@@ -42,7 +42,7 @@ export default function Form(props) {
                     ))}
 
                 </details>
-                <button type="submit" >Submit</button>
+                <button onClick={() => setOpen(false)} type="submit" >Submit</button>
             </form>
         </>
 
