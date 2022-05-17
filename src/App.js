@@ -16,9 +16,18 @@ function App() {
   });
 
   const transitionIcon = useTransition(isLoading, {
-    from: { opacity: 0 },
+    from: { opacity: 0, position: 'absolute', top: '50%', left: '50%' },
     enter: { opacity: 1 },
-    leave: { opacity: 0 },
+    leave: { opacity: 0, position: 'absolute', top: '50%', left: '100%' },
+  })
+
+  const transitionCard = useTransition(!isLoading, {
+    from: { opacity: 0, marginLeft: -100 },
+    enter: { opacity: 1, marginLeft: 0 },
+    leave: { opacity: 0, marginLeft: 100 },
+    delay: 500,
+
+
   })
 
   useEffect(() => {
@@ -60,10 +69,17 @@ function App() {
             <LoadingIcon />
           </animated.div> : null
         ))}
-        {isLoading ? '' : responses.map((response, index) => {
+        {transitionCard((style, loaded) => (
+          loaded ? responses.map((response, index) => (
+            <animated.div className='card' key={index} style={style}>
+              <Card response={response} />
+            </animated.div>
+          ))
+            : null))}
+        {/* {isLoading ? '' : responses.map((response, index) => {
           return <Card key={index} response={response} />
         })
-        }
+        } */}
 
       </div>
     </div>
