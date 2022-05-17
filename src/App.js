@@ -48,7 +48,8 @@ function App() {
         <Form handleChange={handleChange} prompt={prompt} handleSubmit={handleSubmit} />
       </div>
       <div className='responses'>
-        {!responses.length && <h1>Ask GPT3 anything!</h1>}
+        {/* <LoadingIcon /> */}
+        {!responses.length && !isLoading && <h1>Ask GPT3 anything!</h1>}
         {isLoading ? <LoadingIcon /> : responses.map((response, index) => {
           return <Card key={index} response={response} />
         })}
