@@ -16,16 +16,16 @@ function App() {
   });
 
   const transitionIcon = useTransition(isLoading, {
-    from: { opacity: 0, position: 'absolute', top: '50%', left: '50%' },
+    from: { opacity: 0, },
     enter: { opacity: 1 },
-    leave: { opacity: 0, position: 'absolute', top: '50%', left: '100%' },
+    leave: { opacity: 0, },
   })
 
   const transitionCard = useTransition(!isLoading, {
     from: { opacity: 0, marginLeft: -100 },
     enter: { opacity: 1, marginLeft: 0 },
     leave: { opacity: 0, marginLeft: 100 },
-    delay: 500,
+
 
 
   })
