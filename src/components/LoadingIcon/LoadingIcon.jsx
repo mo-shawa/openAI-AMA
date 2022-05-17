@@ -7,7 +7,7 @@ export default function LoadingIcon() {
             preserveAspectRatio="xMidYMid meet">
 
             <g transform="translate(0.000000,256.000000) scale(0.100000,-0.100000)"
-                fill="#000000" stroke="#ffffff" stroke-width='30'>
+                fill="transparent" stroke="#000000" strokeWidth='30'>
                 <path d="M1003 2505 c-175 -47 -317 -195 -352 -367 -7 -34 -10 -183 -9 -417
 l3 -364 145 -84 c80 -47 151 -87 158 -90 9 -4 12 73 12 363 l0 369 295 170
 294 169 -22 39 c-30 53 -123 140 -185 171 -108 55 -232 69 -339 41z"/>
@@ -29,7 +29,7 @@ l3 -364 145 -84 c80 -47 151 -87 158 -90 9 -4 12 73 12 363 l0 369 295 170
 -180z"/>
             </g>
             {/* <animate attributeName="opacity" values='1;0.5;1' dur='2s' repeatCount='indefinite' /> */}
-            <animateTransform attributeName='transform' type='rotate' from={0} to={180} dur='8s' repeatCount='indefinite' />
+            <animateTransform attributeName='transform' type='rotate' from={0} to={360} dur='16s' repeatCount='indefinite' />
         </svg>
     )
 }
