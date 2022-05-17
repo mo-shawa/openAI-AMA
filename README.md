@@ -1,6 +1,17 @@
+# Launch OpenAI AMA
+
+Click [Here](https://openai-ama.herokuapp.com/) to launch the app!
+
+<hr/>
+
+### CRA Readme Below
+
+<hr/>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
