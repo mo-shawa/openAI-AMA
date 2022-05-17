@@ -9,7 +9,7 @@ import { useTransition, animated } from 'react-spring'
 
 
 function App() {
-  const [prompt, setPrompt] = useState({});
+  const [prompt, setPrompt] = useState({ prompt: '' });
   const [isLoading, setIsLoading] = useState(false);
   const [responses, setResponses] = useState(() => {
     const storage = JSON.parse(localStorage.getItem('responses'));
@@ -40,7 +40,7 @@ function App() {
       model: data.response.model
     }, ...responses]);
     setIsLoading(false);
-    setPrompt({});
+    setPrompt({ prompt: '' });
   }
 
   const handleChange = (e) => {
