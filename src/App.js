@@ -40,7 +40,7 @@ function App() {
       model: data.response.model
     }, ...responses]);
     setIsLoading(false);
-    setPrompt('');
+    setPrompt({});
   }
 
   const handleChange = (e) => {
@@ -78,14 +78,10 @@ function App() {
           loaded ? responses.map((response, index) => (
             <animated.div className='card' key={index} style={style}>
               <Card response={response} />
+              <small style={{ position: 'absolute', right: 0, bottom: 0, float: 'right' }}>{response.model}</small>
             </animated.div>
           ))
             : null))}
-        {/* {isLoading ? '' : responses.map((response, index) => {
-          return <Card key={index} response={response} />
-        })
-        } */}
-
       </div>
     </div>
   );
