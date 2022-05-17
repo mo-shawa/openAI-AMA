@@ -54,9 +54,9 @@ function App() {
   })
 
   const transitionCard = useTransition(!isLoading, {
-    from: { opacity: 0, marginLeft: -100 },
-    enter: { opacity: 1, marginLeft: 0 },
-    leave: { opacity: 0, marginLeft: 100 },
+    from: { opacity: 0, marginTop: 100 },
+    enter: { opacity: 1, marginTop: 0 },
+    leave: { opacity: 0, marginTop: 100 },
   })
 
 
