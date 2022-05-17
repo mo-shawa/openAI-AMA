@@ -3,6 +3,7 @@ import Card from './components/Card/Card';
 import Form from './components/Form/Form';
 import LoadingIcon from './components/LoadingIcon/LoadingIcon';
 import { useState, useEffect } from 'react';
+import { useTransition, animated } from 'react-spring'
 
 
 
@@ -14,6 +15,11 @@ function App() {
     return storage || [];
   });
 
+  const transitionIcon = useTransition(isLoading, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+  })
 
   useEffect(() => {
     localStorage.setItem('responses', JSON.stringify(responses));
@@ -49,9 +55,16 @@ function App() {
       </div>
       <div className='responses'>
         {!responses.length && !isLoading && <h1>Ask GPT3 anything!</h1>}
-        {isLoading ? <LoadingIcon /> : responses.map((response, index) => {
+        {transitionIcon((style, loading) => (
+          loading ? <animated.div style={style}>
+            <LoadingIcon />
+          </animated.div> : null
+        ))}
+        {isLoading ? '' : responses.map((response, index) => {
           return <Card key={index} response={response} />
-        })}
+        })
+        }
+
       </div>
     </div>
   );
