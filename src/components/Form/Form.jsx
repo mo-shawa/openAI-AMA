@@ -20,7 +20,7 @@ export default function Form(props) {
             <form onSubmit={props.handleSubmit}>
                 <textarea placeholder='Write prompt here...' onChange={props.handleChange} value={props.prompt.prompt} name="prompt" id="text" cols="30" rows="4"></textarea>
                 <details open>
-                    <summary onClick={handleSummary}>Super Secret Settings</summary>
+                    <summary onClick={handleSummary}>Settings</summary>
                     {animateDetails((style, isOpen) => (
                         isOpen ? <animated.div style={style}>
                             <div className="detailsContent">
