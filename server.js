@@ -21,8 +21,8 @@ app.post('/api', async (req, res) => {
 
     const model = req.body.model || "text-curie-001"
     const temp = parseInt(req.body.temperature) || 0.5
-    const tokens = parseInt(req.body.maxTokens) || 50
-
+    const tokens = parseInt(req.body.max_tokens) || 50
+    console.log(parseInt(req.body.temperature), req.body.max_tokens)
     const response = await api.createCompletion(model,
         {
             prompt: req.body.prompt,

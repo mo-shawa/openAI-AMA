@@ -8,7 +8,6 @@ export default function Form(props) {
         enter: { opacity: 1, maxHeight: '300px' },
         leave: { opacity: 0, maxHeight: '0' }
     })
-    const detailsRef = useRef()
 
     const handleSummary = (e) => {
         e.preventDefault()

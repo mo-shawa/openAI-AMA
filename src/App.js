@@ -67,7 +67,7 @@ function App() {
         <Form handleChange={handleChange} prompt={prompt} handleSubmit={handleSubmit} />
       </div>
       <div style={isLoading ? { overflow: 'hidden' } : {}} className='responses'>
-        {!responses.length && !isLoading && <h1>Ask GPT3 anything!</h1>}
+        {!responses.length && !isLoading && <h2>Ask GPT3 anything!</h2>}
         {transitionIcon((style, loading) => (
           loading ? <animated.div style={style}>
             <LoadingIcon />
