@@ -2,6 +2,8 @@
 
 Click [Here](https://openai-ama.herokuapp.com/) to launch the app!
 
+<img src="https://i.imgur.com/HOwgy5U.png" />
+
 <hr/>
 
 ### CRA Readme Below
