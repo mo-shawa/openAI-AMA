@@ -13,28 +13,37 @@ export default function Form(props) {
         e.preventDefault()
         setOpen(!open)
     }
+
+    const handleSetPrompt = (e) => {
+        props.setPrompt(e.target.value)
+    }
+
+    const handleSetSettings = (e) => {
+        props.setSettings(state => ({ ...state, [e.target.name]: e.target.value }));
+    }
+
     return (
         <>
             <h1>Robot AMA</h1>
             <form onSubmit={props.handleSubmit}>
-                <textarea autoFocus placeholder='Write prompt here...' onChange={props.handleChange} value={props.prompt.prompt} name="prompt" id="text" cols="30" rows="4"></textarea>
+                <textarea autoFocus placeholder='Write prompt here...' onChange={handleSetPrompt} value={props.prompt} name="prompt" id="text" cols="30" rows="4"></textarea>
                 <details open>
                     <summary onClick={handleSummaryOpen} >Settings</summary>
                     {animateDetails((style, isOpen) => (
                         isOpen ? <animated.div style={style}>
                             <div className="detailsContent">
-                                <select onChange={props.handleChange} value={props.prompt.model} name="model" >
+                                <select onChange={handleSetSettings} value={props.prompt.model} name="model" >
                                     <option value=''>Pick an engine</option>
-                                    <option value='text-curie-001'>text-curie-001 (default)</option>
-                                    <option value='text-ada-001'>text-ada-001 (faster)</option>
+                                    <option name="model" value='text-curie-001'>text-curie-001 (default)</option>
+                                    <option name="model" value='text-ada-001'>text-ada-001 (faster)</option>
                                     <option value='text-davinci-002'>text-davinci-002 (more sophisticated)</option>
                                 </select>
                                 <hr />
                                 <label htmlFor="temperature">Temperature (creativity)</label>
-                                <input onChange={props.handleChange} value={props.prompt.temperature} type="range" name="temperature" defaultValue={0.5} step={0.01} min={0} max={1} />
+                                <input onChange={handleSetSettings} value={props.prompt.temperature} type="range" name="temperature" defaultValue={0.5} step={0.01} min={0} max={1} />
                                 <hr />
                                 <label htmlFor="maxTokens">Max tokens (response length)</label>
-                                <input onChange={props.handleChange} value={props.prompt.maxTokens} type="range" defaultValue={50} name="max_tokens" min={20} max={200} />
+                                <input onChange={handleSetSettings} value={props.prompt.maxTokens} type="range" defaultValue={50} name="max_tokens" min={20} max={200} />
                             </div>
                         </animated.div>
                             : null

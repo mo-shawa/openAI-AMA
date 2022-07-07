@@ -9,12 +9,17 @@ import { useTransition, animated } from 'react-spring'
 
 
 function App() {
-  const [prompt, setPrompt] = useState({ prompt: '' });
+  const [prompt, setPrompt] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [responses, setResponses] = useState(() => {
     const storage = JSON.parse(localStorage.getItem('responses'));
     return storage || [];
   });
+  const [settings, setSettings] = useState({
+    model: "text-curie-001",
+    temperature: 0.5,
+    max_tokens: 50
+  })
 
   useEffect(() => {
     localStorage.setItem('responses', JSON.stringify(responses));
@@ -25,25 +30,30 @@ function App() {
     e.preventDefault();
     setIsLoading(true);
 
+    const body = JSON.stringify({
+      prompt: prompt,
+      model: settings.model,
+      temperature: settings.temperature,
+      max_tokens: settings.max_tokens
+    })
+
+    console.log(body)
+
     const response = await fetch('/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(prompt)
+      body: body
     })
     const data = await response.json();
     setResponses([{
-      prompt: prompt.prompt,
+      prompt: prompt,
       response: data.response.choices[0].text,
       model: data.response.model
     }, ...responses]);
     setIsLoading(false);
-    setPrompt({ prompt: '' });
-  }
-
-  const handleChange = (e) => {
-    setPrompt(state => ({ ...state, [e.target.name]: e.target.value }));
+    setPrompt('');
   }
 
   const transitionIcon = useTransition(isLoading, {
@@ -63,7 +73,7 @@ function App() {
     <div className="App">
       <IconBar />
       <div className="form-container">
-        <Form handleChange={handleChange} prompt={prompt} handleSubmit={handleSubmit} />
+        <Form prompt={prompt} setPrompt={setPrompt} handleSubmit={handleSubmit} settings={settings} setSettings={setSettings} />
       </div>
       <div style={isLoading ? { overflow: 'hidden' } : {}} className='responses'>
         {!responses.length && !isLoading && <h2>Ask GPT3 anything!</h2>}
