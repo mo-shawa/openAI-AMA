@@ -9,7 +9,7 @@ export default function Form(props) {
         leave: { opacity: 0, maxHeight: '0' }
     })
 
-    const handleSummary = (e) => {
+    const handleSummaryOpen = (e) => {
         e.preventDefault()
         setOpen(!open)
     }
@@ -17,9 +17,9 @@ export default function Form(props) {
         <>
             <h1>Robot AMA</h1>
             <form onSubmit={props.handleSubmit}>
-                <textarea placeholder='Write prompt here...' onChange={props.handleChange} value={props.prompt.prompt} name="prompt" id="text" cols="30" rows="4"></textarea>
+                <textarea autoFocus placeholder='Write prompt here...' onChange={props.handleChange} value={props.prompt.prompt} name="prompt" id="text" cols="30" rows="4"></textarea>
                 <details open>
-                    <summary onClick={handleSummary}>Settings</summary>
+                    <summary onClick={handleSummaryOpen} >Settings</summary>
                     {animateDetails((style, isOpen) => (
                         isOpen ? <animated.div style={style}>
                             <div className="detailsContent">

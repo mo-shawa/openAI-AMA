@@ -63,7 +63,6 @@ function App() {
     <div className="App">
       <IconBar />
       <div className="form-container">
-
         <Form handleChange={handleChange} prompt={prompt} handleSubmit={handleSubmit} />
       </div>
       <div style={isLoading ? { overflow: 'hidden' } : {}} className='responses'>
