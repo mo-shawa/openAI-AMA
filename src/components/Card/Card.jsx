@@ -3,9 +3,9 @@ import React from 'react'
 export default function Card(props) {
     return (
         <article>
-            <h3>Prompt: {props.response.prompt}</h3>
+            <h3>{props.response.prompt ? `"${props.response.prompt}"` : "(no prompt)"}</h3>
             <br />
-            <p>Response: {props.response.response}</p>
+            <p>{props.response.response}</p>
         </article>
     )
 }
