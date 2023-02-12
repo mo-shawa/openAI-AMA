@@ -1,5 +1,5 @@
 :root {
-	--main-color: #2f44af;
+	--main-color: #1565d4;
 }
 
 .App,
@@ -55,11 +55,11 @@ summary {
 
 summary:hover {
 	text-decoration: underline;
-	color: #008060;
+	color: var(--main-color);
 }
 
 summary::marker {
-	color: #008060;
+	color: var(--main-color);
 	transform: rotate(45deg);
 }
 
@@ -222,7 +222,7 @@ button:hover {
 	width: 100%;
 	max-width: 700px;
 	padding: 3.5rem;
-	background: #008060;
+	background: linear-gradient(45deg, #b56576, #1565d4);
 	color: white;
 	margin-bottom: 1.5rem;
 	border-radius: 1rem;
