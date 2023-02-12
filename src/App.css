@@ -1,243 +1,240 @@
+:root {
+	--main-color: #2f44af;
+}
+
 .App,
 #root,
 body {
-  height: 100vh;
-  width: 100vw;
+	height: 100vh;
+	width: 100vw;
 }
 
 a {
-  text-decoration: none;
-  color: #000;
-  transition: color 0.2s ease-in-out;
+	text-decoration: none;
+	color: #000;
+	transition: color 0.2s ease-in-out;
 }
 
 a:hover {
-  color: #008060
+	color: var(--main-color);
 }
 
 .App {
-  position: relative;
+	position: relative;
 }
 
 details {
-  display: inline;
-  float: left;
-  width: 50%;
-  margin: 1rem auto;
-  text-align: center;
-  padding: 11px 24px;
-  min-height: 44px;
-  min-width: 44px;
-  color: #202223;
-  font-weight: 500;
-  font-size: 14px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 0.25rem;
-
+	display: inline;
+	float: left;
+	width: 50%;
+	margin: 1rem auto;
+	text-align: center;
+	padding: 11px 24px;
+	min-height: 44px;
+	min-width: 44px;
+	color: #202223;
+	font-weight: 500;
+	font-size: 14px;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 0.25rem;
 }
 
 .detailsContent {
-  height: 100%
+	height: 100%;
 }
 
-.detailsContent>* {
-  width: 100%;
-  margin: 0.5rem 0.25rem
+.detailsContent > * {
+	width: 100%;
+	margin: 0.5rem 0.25rem;
 }
 
 summary {
-  cursor: pointer;
-  transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+	cursor: pointer;
+	transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
 }
 
 summary:hover {
-  text-decoration: underline;
-  color: #008060
+	text-decoration: underline;
+	color: #008060;
 }
 
 summary::marker {
-  color: #008060;
-  transform: rotate(45deg);
+	color: #008060;
+	transform: rotate(45deg);
 }
 
 .form-control {
-  width: 100%
+	width: 100%;
 }
 
 input {
-  width: 100%;
-  display: inline;
+	width: 100%;
+	display: inline;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-  background-color: whitesmoke;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow-y: visible;
-
+	background-color: whitesmoke;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	overflow-y: visible;
 }
 
 .path {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  stroke-dasharray: 500;
-  animation: dash 2s ease-in-out infinite;
-  fill-opacity: 1;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	stroke-dasharray: 500;
+	animation: dash 2s ease-in-out infinite;
+	fill-opacity: 1;
 }
 
 @keyframes dash {
-  to {
-    stroke-dashoffset: 2000;
-  }
+	to {
+		stroke-dashoffset: 2000;
+	}
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 900px;
-  background-color: white;
-  margin: 0 auto;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  overflow-y: scroll;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	max-width: 900px;
+	background-color: white;
+	margin: 0 auto;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+	overflow-y: scroll;
 }
 
 .iconBar {
-  position: static;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  background-color: #f9f9f9;
+	position: static;
+	padding: 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	background-color: #f9f9f9;
 }
 
 .form-container {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: #ffffffd0;
-  backdrop-filter: blur(0.5rem) saturate(1.5);
-  position: sticky;
-  top: 0;
-  margin: 1.5rem auto;
-  padding: 2rem;
+	position: relative;
+	z-index: 10;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	background-color: #ffffffd0;
+	backdrop-filter: blur(0.5rem) saturate(1.5);
+	position: sticky;
+	top: 0;
+	margin: 1.5rem auto;
+	padding: 2rem;
 }
 
 form {
-  margin-top: 2rem;
-  width: 100%;
-  max-width: 700px;
+	margin-top: 2rem;
+	width: 100%;
+	max-width: 700px;
 }
 
 .responses {
-  padding: 2rem;
-  width: 100%;
-  display: block;
-  height: 100%;
-  min-height: 30vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
+	padding: 2rem;
+	width: 100%;
+	display: block;
+	height: 100%;
+	min-height: 30vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
 }
 
 ::-webkit-scrollbar {
-  width: 0.5rem;
+	width: 0.5rem;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+	background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 2rem
+	background: #888;
+	border-radius: 2rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+	background: #555;
 }
 
 h1 {
-  font-size: 2rem;
-  font-weight: 300;
+	font-size: 2rem;
+	font-weight: 300;
 }
 
 textarea {
-  resize: none;
-  display: block;
-  width: 100%;
-  border: 1px solid #babfc3;
-  border-radius: 0.25rem;
-  padding: 0.5rem;
-
+	resize: none;
+	display: block;
+	width: 100%;
+	border: 1px solid #babfc3;
+	border-radius: 0.25rem;
+	padding: 0.5rem;
 }
 
 button {
-  display: inline;
-  float: right;
-  width: 50%;
-  margin: 1rem auto;
-  display: inline;
-  outline: 0;
-  cursor: pointer;
-  text-align: center;
-  border: 1px solid #babfc3;
-  padding: 11px 24px;
-  min-height: 44px;
-  min-width: 44px;
-  color: #202223;
-  background: #ffffff;
-  border-radius: 0.25rem;
-  font-weight: 500;
-  font-size: 14px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
-  transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
-
+	display: inline;
+	float: right;
+	width: 50%;
+	margin: 1rem auto;
+	display: inline;
+	outline: 0;
+	cursor: pointer;
+	text-align: center;
+	border: 1px solid #babfc3;
+	padding: 11px 24px;
+	min-height: 44px;
+	min-width: 44px;
+	color: #202223;
+	background: #ffffff;
+	border-radius: 0.25rem;
+	font-weight: 500;
+	font-size: 14px;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
+	transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 button:hover {
-  background: #f6f6f7;
-  outline: 1px solid transparent;
+	background: #f6f6f7;
+	outline: 1px solid transparent;
 }
 
 .card {
-  position: relative;
-  width: 100%;
-  max-width: 700px;
-  padding: 3.5rem;
-  background: #008060;
-  color: white;
-  margin-bottom: 1.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-
+	position: relative;
+	width: 100%;
+	max-width: 700px;
+	padding: 3.5rem;
+	background: #008060;
+	color: white;
+	margin-bottom: 1.5rem;
+	border-radius: 1rem;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 small {
-  font-size: 0.8rem;
-  color: #ffffff;
-  margin: 0.7rem
+	font-size: 0.8rem;
+	color: #ffffff;
+	margin: 0.7rem;
 }
 
 .card {
-  overflow-wrap: break-word;
+	overflow-wrap: break-word;
 }
-
