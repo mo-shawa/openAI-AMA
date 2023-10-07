@@ -1,5 +1,7 @@
 :root {
 	--main-color: #1565d4;
+	--light-gradient: linear-gradient(145deg, #fbeff4, #f6f5f3, #edf2fc);
+	--main-gradient: linear-gradient(45deg, #b56576, #1565d4);
 }
 
 .App,
@@ -11,12 +13,15 @@ body {
 
 a {
 	text-decoration: none;
+	background: var(--main-gradient);
+	background-clip: text;
+	-webkit-background-clip: text;
 	color: #000;
 	transition: color 0.2s ease-in-out;
 }
 
 a:hover {
-	color: var(--main-color);
+	color: transparent;
 }
 
 .App {
@@ -79,7 +84,7 @@ input {
 }
 
 body {
-	background-color: whitesmoke;
+	background: var(--light-gradient);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -222,7 +227,7 @@ button:hover {
 	width: 100%;
 	max-width: 700px;
 	padding: 3.5rem;
-	background: linear-gradient(45deg, #b56576, #1565d4);
+	background: var(--main-gradient);
 	color: white;
 	margin-bottom: 1.5rem;
 	border-radius: 1rem;
